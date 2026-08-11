@@ -11,10 +11,11 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-brand-navy text-white">
       {/* Mobile: logo + hamburger em uma única linha */}
-      <div className="flex items-center justify-between px-6 py-4 md:hidden">
-        <Link href="/" aria-label="Sensora, ir para o início">
+      <div className="flex items-center justify-between px-4 py-4 md:hidden">
+        <div><Link href="/" aria-label="Sensora, ir para o início">
           <Logo className="scale-90" />
         </Link>
+        </div>
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
@@ -35,10 +36,13 @@ export default function Navbar() {
       </div>
 
       {/* Desktop: logo à esquerda, navegação à direita */}
-      <div className="mx-auto hidden max-w-7xl items-center justify-between px-6 py-5 md:flex lg:px-10">
+      <div className="mx-auto hidden max-w-7xl items-center flex-col gap-8 justify-between px-6 py-5 md:flex lg:px-10">
+        <div>
         <Link href="/" aria-label="Sensora, ir para o início">
-          <Logo className="items-start text-left" />
+          <Logo />
+          
         </Link>
+        </div>
         <nav aria-label="Categorias de produtos">
           <ul className="flex items-center gap-10">
             {NAV_CATEGORIES.map((item) => (
