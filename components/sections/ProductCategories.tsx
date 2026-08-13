@@ -54,8 +54,7 @@ export default function ProductCategories() {
                   label={category.label}
                   className="transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-opacity group-hover:from-black/85" />
-                <div className="absolute inset-x-0 bottom-0 p-5 lg:p-7">
+                <div className="absolute inset-x-0 bottom-0 p-5 [text-shadow:0_2px_10px_rgba(0,0,0,0.55)] lg:p-7">
                   <h3 className={`font-serif font-normal text-white ${layout?.title ?? "text-xl"}`}>
                     {category.label}
                   </h3>

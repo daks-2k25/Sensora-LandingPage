@@ -52,13 +52,6 @@ export default function HeroCarousel() {
               label={slide.title}
               priority={slideIndex === 0}
             />
-            <div
-              className={
-                slide.hideOverlayHeading
-                  ? "absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"
-                  : "absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"
-              }
-            />
             <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-16 text-center text-white sm:pb-20">
               <h2
                 className={
