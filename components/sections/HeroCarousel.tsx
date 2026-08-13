@@ -49,11 +49,33 @@ export default function HeroCarousel() {
               label={slide.title}
               priority={slideIndex === 0}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+            <div
+              className={
+                slide.hideOverlayHeading
+                  ? "absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"
+                  : "absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"
+              }
+            />
             <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 px-6 pb-12 text-center text-white sm:pb-16">
-              <h2 className="text-2xl font-light tracking-wide sm:text-4xl">{slide.title}</h2>
+              <h2
+                className={
+                  slide.hideOverlayHeading
+                    ? "sr-only"
+                    : "text-2xl font-light tracking-wide sm:text-4xl"
+                }
+              >
+                {slide.title}
+              </h2>
               {slide.subtitle && (
-                <p className="max-w-md text-sm text-white/85 sm:text-base">{slide.subtitle}</p>
+                <p
+                  className={
+                    slide.hideOverlayHeading
+                      ? "sr-only"
+                      : "max-w-md text-sm text-white/85 sm:text-base"
+                  }
+                >
+                  {slide.subtitle}
+                </p>
               )}
               <Link
                 href={slide.ctaHref}
