@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #faf8f4;
   --foreground: #171717;
   --brand-navy: #02183d;
   --brand-navy-light: #123a66;
   --brand-orange: #c45a31;
   --brand-orange-light: #d97f5c;
+  /* Washes muito baixos dos tons de marca — usados só para dar profundidade
+     sutil ao fundo (body) e aos ornamentos decorativos, nunca como cor sólida. */
+  --brand-orange-wash: rgba(196, 90, 49, 0.05);
+  --brand-navy-wash: rgba(2, 24, 61, 0.045);
 }
 
 @theme inline {
@@ -18,10 +22,28 @@
   --color-brand-orange-light: var(--brand-orange-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
-  background: var(--background);
+  /* Fundo off-white com uma respiração muito sutil de navy/laranja em
+     manchas grandes e assimétricas — nunca um degradê centrado/óbvio,
+     nunca competindo com foto, texto ou CTA. Some perto de 100% do
+     percurso até a base off-white. */
+  background:
+    radial-gradient(1100px 700px at 88% -8%, var(--brand-orange-wash), transparent 60%),
+    radial-gradient(1000px 800px at -12% 45%, var(--brand-navy-wash), transparent 55%),
+    radial-gradient(900px 650px at 60% 100%, var(--brand-orange-wash), transparent 60%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }

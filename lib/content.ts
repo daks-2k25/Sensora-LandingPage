@@ -124,15 +124,15 @@ const VELAS_4_ESTACOES: Collection = {
   tagline: "Primavera, Verão, Outono e Inverno em uma coleção.",
   description:
     "Quatro atmosferas, infinitas memórias. Uma coleção criada para transformar cada momento do ano em uma experiência de aconchego, beleza e sensações que permanecem.",
-  heroImageSrc: "/images/hero/velas-4-estacoes.png",
-  heroImageAlt: "Coleção de velas aromáticas 4 Estações da Sensora",
+  heroImageSrc: "/images/hero/banner-4-estacoes.png",
+  heroImageAlt: "Coleção de velas aromáticas 4 Estações da Sensora, com as quatro velas lado a lado sobre uma bancada",
   items: [
     {
       slug: "primavera",
       name: "Frescor de Primavera",
       seasonLabel: "Primavera",
       description: "[Descrição a definir: notas e inspiração da vela Frescor de Primavera.]",
-      mood: "[Atmosfera a definir: sensação que a Sensora deseja transmitir na primavera.]",
+      mood: "Notas frescas que despertam os sentidos e renovam o ambiente.",
       imageSrc: "/images/collections/velas-4-estacoes/primavera.png",
       imageAlt: "Vela aromática Frescor de Primavera da Sensora",
       ctaLabel: "Conhecer vela",
@@ -143,7 +143,7 @@ const VELAS_4_ESTACOES: Collection = {
       name: "Luz de Verão",
       seasonLabel: "Verão",
       description: "[Descrição a definir: notas e inspiração da vela Luz de Verão.]",
-      mood: "[Atmosfera a definir: sensação que a Sensora deseja transmitir no verão.]",
+      mood: "Uma brisa cítrica e luminosa para dias longos e leves.",
       imageSrc: "/images/collections/velas-4-estacoes/verao.png",
       imageAlt: "Vela aromática Luz de Verão da Sensora",
       ctaLabel: "Conhecer vela",
@@ -154,7 +154,7 @@ const VELAS_4_ESTACOES: Collection = {
       name: "Manhã de Outono",
       seasonLabel: "Outono",
       description: "[Descrição a definir: notas e inspiração da vela Manhã de Outono.]",
-      mood: "[Atmosfera a definir: sensação que a Sensora deseja transmitir no outono.]",
+      mood: "Aromas quentes que convidam ao aconchego das manhãs mais lentas.",
       imageSrc: "/images/collections/velas-4-estacoes/outono.png",
       imageAlt: "Vela aromática Manhã de Outono da Sensora",
       ctaLabel: "Conhecer vela",
@@ -165,7 +165,7 @@ const VELAS_4_ESTACOES: Collection = {
       name: "Brisa de Inverno",
       seasonLabel: "Inverno",
       description: "[Descrição a definir: notas e inspiração da vela Brisa de Inverno.]",
-      mood: "[Atmosfera a definir: sensação que a Sensora deseja transmitir no inverno.]",
+      mood: "Calor e conforto em cada respiro dos dias mais frios.",
       imageSrc: "/images/collections/velas-4-estacoes/inverno.png",
       imageAlt: "Vela aromática Brisa de Inverno da Sensora",
       ctaLabel: "Conhecer vela",
@@ -275,6 +275,10 @@ export const ABOUT_CONTENT: AboutContent = {
   ],
   imageAlt: "Vela aromática Sensora Home decorada com flor de laranjeira",
   imageSrc: "/images/about/sobre-sensora.png",
+};
+
+export const MANIFESTO_CONTENT = {
+  quote: "O aroma que transforma um espaço em lar.",
 };
 
 export const FOOTER_CONTENT = {

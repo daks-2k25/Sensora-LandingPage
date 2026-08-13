@@ -35,23 +35,19 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Desktop: logo à esquerda, navegação à direita */}
-      <div className="mx-auto hidden max-w-7xl items-center flex-col gap-8 justify-between px-6 py-5 md:flex lg:px-10">
-        <div>
+      {/* Desktop: logo à esquerda, navegação à direita, em uma única linha */}
+      <div className="mx-auto hidden max-w-7xl items-center justify-between px-6 py-4 md:flex lg:px-10">
         <Link href="/" aria-label="Sensora, ir para o início">
-          <Logo />
-          
+          <Logo showTagline={false} className="scale-90" />
         </Link>
-        </div>
         <nav aria-label="Categorias de produtos">
-          <ul className="flex items-center gap-10">
+          <ul className="flex items-center gap-9">
             {NAV_CATEGORIES.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-2.5 text-sm font-medium tracking-wide text-white/90 transition-colors hover:text-brand-orange"
+                  className="text-sm font-medium tracking-wide text-white/90 transition-colors hover:text-brand-orange"
                 >
-                  <span className="h-3 w-3 border border-white/50" aria-hidden />
                   {item.label}
                 </Link>
               </li>
@@ -71,9 +67,8 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-md px-2 py-3 text-sm font-medium tracking-wide text-white/90 hover:bg-white/10 hover:text-brand-orange"
+                className="block rounded-md px-2 py-3 text-sm font-medium tracking-wide text-white/90 hover:bg-white/10 hover:text-brand-orange"
               >
-                <span className="h-3 w-3 border border-white/50" aria-hidden />
                 {item.label}
               </Link>
             </li>

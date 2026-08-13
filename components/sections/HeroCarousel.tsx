@@ -32,7 +32,10 @@ export default function HeroCarousel() {
   }, [total]);
 
   return (
-    <section aria-label="Destaques Sensora" className="relative w-full overflow-hidden bg-brand-navy">
+    <section
+      aria-label="Destaques Sensora"
+      className="group relative w-full overflow-hidden bg-brand-navy"
+    >
       <div
         className="flex transition-transform duration-700 ease-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
@@ -40,7 +43,7 @@ export default function HeroCarousel() {
         {HERO_SLIDES.map((slide, slideIndex) => (
           <div
             key={slide.id}
-            className="relative aspect-[4/5] w-full flex-shrink-0 sm:aspect-[16/9] lg:aspect-[21/9]"
+            className="relative aspect-[4/5] w-full flex-shrink-0 sm:aspect-[16/9] lg:aspect-auto lg:h-[90vh] lg:max-h-[860px] lg:min-h-[600px]"
             aria-hidden={slideIndex !== index}
           >
             <PlaceholderImage
@@ -56,12 +59,12 @@ export default function HeroCarousel() {
                   : "absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"
               }
             />
-            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 px-6 pb-12 text-center text-white sm:pb-16">
+            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-16 text-center text-white sm:pb-20">
               <h2
                 className={
                   slide.hideOverlayHeading
                     ? "sr-only"
-                    : "text-2xl font-light tracking-wide sm:text-4xl"
+                    : "max-w-3xl font-serif text-4xl leading-tight font-normal tracking-tight sm:text-6xl lg:text-7xl"
                 }
               >
                 {slide.title}
@@ -71,7 +74,7 @@ export default function HeroCarousel() {
                   className={
                     slide.hideOverlayHeading
                       ? "sr-only"
-                      : "max-w-md text-sm text-white/85 sm:text-base"
+                      : "mt-4 max-w-md text-sm font-light text-white/80 sm:text-base"
                   }
                 >
                   {slide.subtitle}
@@ -79,9 +82,15 @@ export default function HeroCarousel() {
               )}
               <Link
                 href={slide.ctaHref}
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-brand-orange px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-brand-orange-light"
+                className="group/cta mt-8 inline-flex items-center gap-3 border border-white/70 px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:border-brand-orange hover:bg-brand-orange"
               >
                 {slide.ctaLabel}
+                <span
+                  aria-hidden
+                  className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                >
+                  →
+                </span>
               </Link>
             </div>
           </div>
@@ -94,7 +103,7 @@ export default function HeroCarousel() {
             type="button"
             onClick={() => goTo(index - 1)}
             aria-label="Banner anterior"
-            className="absolute left-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-black/30 p-2 text-2xl leading-none text-white transition-colors hover:bg-black/50 sm:flex"
+            className="absolute left-4 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 p-2.5 text-xl leading-none text-white opacity-0 transition-all duration-300 hover:border-white hover:bg-white/10 group-hover:opacity-100 sm:flex sm:left-6"
           >
             ‹
           </button>
@@ -102,12 +111,12 @@ export default function HeroCarousel() {
             type="button"
             onClick={() => goTo(index + 1)}
             aria-label="Próximo banner"
-            className="absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-full bg-black/30 p-2 text-2xl leading-none text-white transition-colors hover:bg-black/50 sm:flex"
+            className="absolute right-4 top-1/2 hidden -translate-y-1/2 rounded-full border border-white/40 p-2.5 text-xl leading-none text-white opacity-0 transition-all duration-300 hover:border-white hover:bg-white/10 group-hover:opacity-100 sm:flex sm:right-6"
           >
             ›
           </button>
 
-          <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2">
+          <div className="absolute inset-x-0 bottom-6 flex items-center justify-center gap-2 px-6 sm:bottom-8">
             {HERO_SLIDES.map((slide, slideIndex) => (
               <button
                 key={slide.id}
@@ -115,10 +124,16 @@ export default function HeroCarousel() {
                 onClick={() => goTo(slideIndex)}
                 aria-label={`Ir para o banner ${slideIndex + 1}`}
                 aria-current={slideIndex === index}
-                className={`h-2 rounded-full transition-all ${
-                  slideIndex === index ? "w-6 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
-                }`}
-              />
+                className="h-[3px] w-10 overflow-hidden rounded-full bg-white/30 sm:w-14"
+              >
+                {slideIndex === index && (
+                  <span
+                    aria-hidden
+                    className="block h-full origin-left bg-white"
+                    style={{ animation: `hero-progress ${AUTOPLAY_MS}ms linear forwards` }}
+                  />
+                )}
+              </button>
             ))}
           </div>
         </>

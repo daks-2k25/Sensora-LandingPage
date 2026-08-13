@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -15,6 +15,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Sensora | Marketing Sensorial",
   description:
@@ -27,8 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <body className="bg-white text-slate-900">
+    <html
+      lang="pt-BR"
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
+    >
+      <body className="bg-background text-slate-900">
         <PageFadeIn>
           <Navbar />
           <main className="flex-1">{children}</main>

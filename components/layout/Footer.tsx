@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-navy text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-20 sm:grid-cols-2 lg:grid-cols-5 lg:px-10">
         <div className="sm:col-span-2 lg:col-span-2">
           <Logo className="items-start text-left" />
           <p className="mt-4 max-w-xs text-sm text-white/70">{FOOTER_CONTENT.tagline}</p>
@@ -67,7 +67,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-center text-xs text-white/60 sm:flex-row sm:text-left">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-center text-xs text-white/60 sm:flex-row sm:text-left lg:px-10">
           <p>© {year} Sensora. Todos os direitos reservados.</p>
           <p className="uppercase tracking-[0.2em]">Marketing Sensorial</p>
         </div>
