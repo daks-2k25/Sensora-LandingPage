@@ -1,3 +1,4 @@
+import AmbientOrnament from "@/components/ui/AmbientOrnament";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { ABOUT_CONTENT } from "@/lib/content";
@@ -6,8 +7,18 @@ export default function AboutSection() {
   return (
     <section
       aria-labelledby="sobre-heading"
-      className="relative overflow-hidden bg-background py-28 sm:py-36 lg:py-40"
+      className="relative overflow-hidden bg-[#f5f2ed] py-28 sm:py-36 lg:py-40"
     >
+      <AmbientOrnament
+        variant="arc"
+        tone="navy"
+        className="-top-24 -right-24 hidden h-64 w-64 sm:block sm:h-80 sm:w-80"
+      />
+      <AmbientOrnament
+        variant="rings"
+        tone="orange"
+        className="-bottom-28 -right-28 hidden h-72 w-72 sm:block sm:h-96 sm:w-96"
+      />
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-24 lg:px-10">
         <RevealOnScroll className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
           <svg
