@@ -70,11 +70,21 @@ export type Collection = {
   items: ProductItem[];
 };
 
+/** Item visual simples de uma categoria sem coleção temática própria (ex.: Sprays, Difusores). */
+export type CategoryProduct = {
+  slug: string;
+  name: string;
+  imageSrc: string;
+  imageAlt: string;
+};
+
 export type Category = {
   slug: CategorySlug;
   label: string;
   description: string;
   imageSrc?: string;
+  /** Produtos apresentados via CategoryProducts quando a categoria não tem uma Collection própria. */
+  products?: CategoryProduct[];
 };
 
 // ---------------------------------------------------------------------------
@@ -89,17 +99,59 @@ export const CATEGORIES: Category[] = [
     label: "Velas Aromáticas",
     description:
       "Velas perfumadas que transformam qualquer ambiente em uma experiência sensorial completa.",
-    imageSrc: "/images/categories/velas-aromaticas.png",
+    imageSrc: "/images/categories/velas-aromaticas.jpg",
   },
   {
     slug: "sprays",
     label: "Sprays de Ambiente",
     description: "Fragrâncias em spray para perfumar o ambiente na hora, com a assinatura Sensora.",
+    imageSrc: "/images/categories/sprays-de-ambiente.jpg",
+    products: [
+      {
+        slug: "baunilha",
+        name: "Baunilha",
+        imageSrc: "/images/products/sprays/baunilha.jpg",
+        imageAlt: "Spray de ambiente Baunilha da Sensora",
+      },
+      {
+        slug: "especiarias",
+        name: "Especiarias",
+        imageSrc: "/images/products/sprays/especiarias.jpg",
+        imageAlt: "Spray de ambiente Especiarias da Sensora",
+      },
+      {
+        slug: "flor-de-laranjeira",
+        name: "Flor de Laranjeira",
+        imageSrc: "/images/products/sprays/flor-de-laranjeira.jpg",
+        imageAlt: "Spray de ambiente Flor de Laranjeira da Sensora",
+      },
+    ],
   },
   {
     slug: "difusores",
     label: "Difusores de Aroma",
     description: "Fragrância contínua e discreta para manter a atmosfera perfumada o dia inteiro.",
+    imageSrc: "/images/categories/difusores-de-aroma.jpg",
+    products: [
+      {
+        slug: "baunilha",
+        name: "Baunilha",
+        imageSrc: "/images/products/difusores/baunilha.jpg",
+        imageAlt: "Difusor de aroma Baunilha da Sensora",
+      },
+      {
+        slug: "especiarias",
+        name: "Especiarias",
+        imageSrc: "/images/products/difusores/especiarias.jpg",
+        imageAlt: "Difusor de aroma Especiarias da Sensora",
+      },
+      {
+        slug: "flor-de-laranjeira",
+        name: "Flor de Laranjeira",
+        imageSrc: "/images/products/difusores/flor-de-laranjeira.jpg",
+        imageAlt: "Difusor de aroma Flor de Laranjeira da Sensora",
+      },
+    ],
   },
 ];
 
@@ -133,7 +185,7 @@ const VELAS_4_ESTACOES: Collection = {
       seasonLabel: "Primavera",
       description: "[Descrição a definir: notas e inspiração da vela Frescor de Primavera.]",
       mood: "Notas frescas que despertam os sentidos e renovam o ambiente.",
-      imageSrc: "/images/collections/velas-4-estacoes/primavera.png",
+      imageSrc: "/images/collections/velas-4-estacoes/primavera.jpg",
       imageAlt: "Vela aromática Frescor de Primavera da Sensora",
       ctaLabel: "Conhecer vela",
       ctaHref: LOJA_URL,
@@ -144,7 +196,7 @@ const VELAS_4_ESTACOES: Collection = {
       seasonLabel: "Verão",
       description: "[Descrição a definir: notas e inspiração da vela Luz de Verão.]",
       mood: "Uma brisa cítrica e luminosa para dias longos e leves.",
-      imageSrc: "/images/collections/velas-4-estacoes/verao.png",
+      imageSrc: "/images/collections/velas-4-estacoes/verao.jpg",
       imageAlt: "Vela aromática Luz de Verão da Sensora",
       ctaLabel: "Conhecer vela",
       ctaHref: LOJA_URL,
@@ -155,7 +207,7 @@ const VELAS_4_ESTACOES: Collection = {
       seasonLabel: "Outono",
       description: "[Descrição a definir: notas e inspiração da vela Manhã de Outono.]",
       mood: "Aromas quentes que convidam ao aconchego das manhãs mais lentas.",
-      imageSrc: "/images/collections/velas-4-estacoes/outono.png",
+      imageSrc: "/images/collections/velas-4-estacoes/outono.jpg",
       imageAlt: "Vela aromática Manhã de Outono da Sensora",
       ctaLabel: "Conhecer vela",
       ctaHref: LOJA_URL,
@@ -166,7 +218,7 @@ const VELAS_4_ESTACOES: Collection = {
       seasonLabel: "Inverno",
       description: "[Descrição a definir: notas e inspiração da vela Brisa de Inverno.]",
       mood: "Calor e conforto em cada respiro dos dias mais frios.",
-      imageSrc: "/images/collections/velas-4-estacoes/inverno.png",
+      imageSrc: "/images/collections/velas-4-estacoes/inverno.jpg",
       imageAlt: "Vela aromática Brisa de Inverno da Sensora",
       ctaLabel: "Conhecer vela",
       ctaHref: LOJA_URL,
@@ -255,6 +307,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLabel: "Conhecer coleção",
     ctaHref: getCategoryHref("sprays"),
     imageAlt: "Sprays de ambiente Sensora",
+    imageSrc: "/images/hero/sprays-de-ambiente.jpg",
   },
   {
     id: "difusores-de-aroma",
@@ -263,6 +316,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLabel: "Conhecer coleção",
     ctaHref: getCategoryHref("difusores"),
     imageAlt: "Difusores de aroma Sensora",
+    imageSrc: "/images/hero/difusores-de-aroma.jpg",
   },
 ];
 
@@ -274,15 +328,15 @@ export const ABOUT_CONTENT: AboutContent = {
     "Cada produto nasce da nossa experiência com o marketing sensorial, unindo perfumaria, estética e cuidado para transformar o cotidiano em experiências que despertam os sentidos. Porque uma casa bem perfumada não é apenas percebida — ela é sentida.",
   ],
   imageAlt: "Vela aromática Sensora Home decorada com flor de laranjeira",
-  imageSrc: "/images/about/sobre-sensora.png",
+  imageSrc: "/images/about/sobre-sensora.jpg",
 };
 
 export const MANIFESTO_CONTENT = {
-  quote: "O aroma que transforma um espaço em lar.",
+  quote: "Onde marcas são sentidas.",
 };
 
 export const FOOTER_CONTENT = {
-  tagline: "Marketing sensorial em cada detalhe.",
+  tagline: "Marcas sentidas, em cada detalhe.",
   contact: {
     email: "[e-mail de contato a definir]",
     phone: "[telefone de contato a definir]",

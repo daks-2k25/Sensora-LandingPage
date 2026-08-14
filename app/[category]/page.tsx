@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import CollectionShowcase from "@/components/collections/CollectionShowcase";
+import CategoryProducts from "@/components/sections/CategoryProducts";
 import AmbientOrnament from "@/components/ui/AmbientOrnament";
 import EmptyState from "@/components/ui/EmptyState";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
@@ -44,6 +45,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         collections.map((collection) => (
           <CollectionShowcase key={collection.slug} collection={collection} />
         ))
+      ) : category.products && category.products.length > 0 ? (
+        <CategoryProducts products={category.products} />
       ) : (
         <EmptyState
           title="Novidades a caminho"
