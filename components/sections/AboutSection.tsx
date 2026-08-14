@@ -19,6 +19,27 @@ export default function AboutSection() {
         tone="orange"
         className="-bottom-28 -right-28 hidden h-72 w-72 sm:block sm:h-96 sm:w-96"
       />
+
+      {/* Acentos de margem: um traço ondulado (esquerda) e uma barra sólida
+          (direita), vivendo na calha vazia fora da coluna de conteúdo. */}
+      <svg
+        aria-hidden
+        viewBox="0 0 40 260"
+        className="pointer-events-none absolute left-2 top-20 hidden h-56 w-10 text-brand-orange/60 sm:block lg:left-6"
+      >
+        <path
+          d="M20 4 C4 40, 36 80, 20 120 S4 200, 20 256"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </svg>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-2 top-[13rem] hidden h-56 w-[3px] rounded-full bg-white/70 sm:block lg:right-6"
+      />
+
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-24 lg:px-10">
         <RevealOnScroll className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
           <svg
