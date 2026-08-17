@@ -1,3 +1,4 @@
+import ImageReveal from "@/components/ui/ImageReveal";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import TextReveal from "@/components/ui/TextReveal";
@@ -19,14 +20,21 @@ export default function AboutSection() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-2 lg:gap-24 lg:px-10">
         <RevealOnScroll className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
           <div className="relative z-10 aspect-[4/5] w-full overflow-hidden rounded-sm bg-white shadow-2xl shadow-brand-navy/15">
-            <PlaceholderImage
-              src={ABOUT_CONTENT.imageSrc}
-              alt={ABOUT_CONTENT.imageAlt}
-              label={ABOUT_CONTENT.title}
-              // Abaixo do lg: largura cheia limitada por max-w-md (448px).
-              // No lg+: metade do grid de 2 colunas (max-w-7xl, gap-24, px-10).
-              sizes="(max-width: 495px) calc(100vw - 48px), (max-width: 1023px) 448px, (max-width: 1280px) calc(50vw - 88px), 552px"
-            />
+            {/* Parallax (CSS puro, ver globals.css) na camada externa; o
+                reveal de entrada (fade + leve zoom) na interna — os dois
+                transforms vivem em elementos separados para não colidir. */}
+            <div className="parallax-drift relative h-full w-full">
+              <ImageReveal>
+                <PlaceholderImage
+                  src={ABOUT_CONTENT.imageSrc}
+                  alt={ABOUT_CONTENT.imageAlt}
+                  label={ABOUT_CONTENT.title}
+                  // Abaixo do lg: largura cheia limitada por max-w-md (448px).
+                  // No lg+: metade do grid de 2 colunas (max-w-7xl, gap-24, px-10).
+                  sizes="(max-width: 495px) calc(100vw - 48px), (max-width: 1023px) 448px, (max-width: 1280px) calc(50vw - 88px), 552px"
+                />
+              </ImageReveal>
+            </div>
           </div>
         </RevealOnScroll>
 

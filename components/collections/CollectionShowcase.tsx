@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import ImageReveal from "@/components/ui/ImageReveal";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import TextReveal from "@/components/ui/TextReveal";
@@ -16,7 +17,15 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
 
   return (
     <section aria-labelledby={headingId} className="mx-auto max-w-7xl px-6 pb-24 sm:pb-32 lg:px-10 lg:pb-40">
-      <RevealOnScroll className="mx-auto max-w-3xl text-center">
+      {collection.heroImageSrc && (
+        <RevealOnScroll className="relative mx-auto aspect-[21/9] w-full max-w-6xl overflow-hidden rounded-sm shadow-2xl shadow-brand-navy/10">
+          <ImageReveal>
+            <PlaceholderImage src={collection.heroImageSrc} alt={collection.heroImageAlt} label={collection.name} />
+          </ImageReveal>
+        </RevealOnScroll>
+      )}
+
+      <RevealOnScroll className="mx-auto mt-12 max-w-3xl text-center sm:mt-16">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-orange">Kit</p>
         <h2 id={headingId} className="mt-4 font-serif text-3xl font-normal tracking-tight text-brand-navy sm:text-4xl">
           <TextReveal>{collection.name}</TextReveal>
@@ -27,25 +36,21 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
         <p className="mt-6 text-base leading-relaxed text-slate-600">{collection.description}</p>
       </RevealOnScroll>
 
-      {collection.heroImageSrc && (
-        <RevealOnScroll className="relative mx-auto mt-12 aspect-[21/9] w-full max-w-6xl overflow-hidden rounded-sm shadow-2xl shadow-brand-navy/10 sm:mt-16">
-          <PlaceholderImage src={collection.heroImageSrc} alt={collection.heroImageAlt} label={collection.name} />
-        </RevealOnScroll>
-      )}
-
       <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-10 sm:mt-20 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4">
         {collection.items.map((item, index) => (
           <RevealOnScroll key={item.slug} delayMs={index * 90} className="group text-center">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-md shadow-brand-navy/10 transition-shadow duration-700 group-hover:shadow-lg group-hover:shadow-brand-navy/15">
-              <PlaceholderImage
-                src={item.imageSrc}
-                alt={item.imageAlt}
-                label={item.name}
-                // Grid de 1/2/4 colunas dentro de um container max-w-6xl (1152px)
-                // com gap-x-6; acima de 1231px de viewport o grid já está no teto.
-                sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 1023px) calc(50vw - 36px), (max-width: 1231px) calc(25vw - 38px), 270px"
-                className="transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
-              />
+              <ImageReveal>
+                <PlaceholderImage
+                  src={item.imageSrc}
+                  alt={item.imageAlt}
+                  label={item.name}
+                  // Grid de 1/2/4 colunas dentro de um container max-w-6xl (1152px)
+                  // com gap-x-6; acima de 1231px de viewport o grid já está no teto.
+                  sizes="(max-width: 639px) calc(100vw - 48px), (max-width: 1023px) calc(50vw - 36px), (max-width: 1231px) calc(25vw - 38px), 270px"
+                  className="transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+                />
+              </ImageReveal>
             </div>
             {item.seasonLabel && (
               <div className="mt-5 flex items-center justify-center gap-2.5">
@@ -56,7 +61,9 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
                 <span aria-hidden className="h-px w-5 bg-brand-orange/40" />
               </div>
             )}
-            <h3 className="mt-3 font-serif text-xl font-normal text-brand-navy">{item.name}</h3>
+            <h3 className="mt-3 font-serif text-xl font-normal text-brand-navy transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5">
+              {item.name}
+            </h3>
             {item.mood && <p className="mx-auto mt-2 max-w-[26ch] text-sm leading-relaxed text-slate-600">{item.mood}</p>}
           </RevealOnScroll>
         ))}

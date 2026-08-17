@@ -56,7 +56,7 @@ export default function ProductCategories() {
               >
                 <Link
                   href={category.href}
-                  className="group relative block h-full w-full transition-shadow duration-700 hover:shadow-xl hover:shadow-brand-navy/20"
+                  className="group relative block h-full w-full transition-shadow duration-700 hover:shadow-lg hover:shadow-brand-navy/15"
                 >
                   <PlaceholderImage
                     src={category.imageSrc}
@@ -71,7 +71,7 @@ export default function ProductCategories() {
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5 lg:p-7">
                     <h3
-                      className={`font-serif font-normal text-white ${layout?.title ?? "text-xl"}`}
+                      className={`font-serif font-normal text-white transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 ${layout?.title ?? "text-xl"}`}
                     >
                       {category.label}
                     </h3>
