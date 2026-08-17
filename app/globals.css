@@ -7,10 +7,6 @@
   --brand-navy-light: #123a66;
   --brand-orange: #c45a31;
   --brand-orange-light: #d97f5c;
-  /* Washes muito baixos dos tons de marca — usados só para dar profundidade
-     sutil ao fundo (body) e aos ornamentos decorativos, nunca como cor sólida. */
-  --brand-orange-wash: rgba(196, 90, 49, 0.05);
-  --brand-navy-wash: rgba(2, 24, 61, 0.045);
 }
 
 @theme inline {
@@ -26,30 +22,9 @@
 }
 
 body {
-  /* Fundo off-white com uma respiração muito sutil de navy/laranja em
-     manchas grandes e assimétricas — nunca um degradê centrado/óbvio,
-     nunca competindo com foto, texto ou CTA. Some perto de 100% do
-     percurso até a base off-white. */
-  background:
-    radial-gradient(1100px 700px at 88% -8%, var(--brand-orange-wash), transparent 60%),
-    radial-gradient(1000px 800px at -12% 45%, var(--brand-navy-wash), transparent 55%),
-    radial-gradient(900px 650px at 60% 100%, var(--brand-orange-wash), transparent 60%),
-    radial-gradient(950px 700px at 6% 82%, var(--brand-navy-wash), transparent 58%),
-    radial-gradient(850px 620px at 96% 55%, var(--brand-orange-wash), transparent 55%),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-}
-
-/* AmbientOrnament usa z-index negativo para ficar atrás do conteúdo normal
-   da seção. Isso só funciona enquanto a seção que o hospeda não formar seu
-   próprio background sólido sem também formar um contexto de empilhamento:
-   sem isolamento, esse background pinta por cima do ornamento (some
-   completamente atrás dele) em vez de atrás. `isolate` ancora o contexto
-   na própria seção, sem mexer no z-index nem no sistema de cor/opacidade
-   do ornamento. Hero fica de fora — não faz parte desta tarefa. */
-section.relative.overflow-hidden:not([aria-label="Destaques Sensora"]) {
-  isolation: isolate;
 }
 
 @keyframes hero-progress {

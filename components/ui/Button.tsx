@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 const VARIANTS = {
-  primary: "bg-brand-orange text-white hover:bg-brand-orange-light",
-  outline: "border border-white text-white hover:bg-white hover:text-brand-navy",
-  navy: "bg-brand-navy text-white hover:bg-brand-navy-light",
+  primary: "bg-brand-orange text-white hover:bg-brand-orange-light hover:shadow-brand-orange/25",
+  outline: "border border-white text-white hover:bg-white hover:text-brand-navy hover:shadow-black/10",
+  navy: "bg-brand-navy text-white hover:bg-brand-navy-light hover:shadow-brand-navy/30",
 } as const;
 
 type ButtonProps = {
@@ -23,7 +23,7 @@ export default function Button({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center rounded-full px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${VARIANTS[variant]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-full px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:shadow-lg ${VARIANTS[variant]} ${className}`}
     >
       {children}
     </Link>

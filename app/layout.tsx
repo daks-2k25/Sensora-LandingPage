@@ -24,7 +24,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Sensora | Marketing Sensorial",
   description:
-    "Conheça as velas aromáticas, sprays de ambiente, difusores de aroma e coleções da Sensora.",
+    "Conheça as velas aromáticas, sprays de ambiente, difusores de aroma e kits da Sensora.",
 };
 
 export default function RootLayout({

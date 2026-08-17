@@ -1,5 +1,4 @@
 import Link from "next/link";
-import AmbientOrnament from "@/components/ui/AmbientOrnament";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { COLLECTIONS, getCollectionHref } from "@/lib/content";
@@ -8,20 +7,10 @@ export default function ColecoesPage() {
   return (
     <>
       <section className="relative mx-auto max-w-3xl overflow-hidden px-6 pt-28 pb-8 text-center sm:pt-36 lg:px-10">
-        <AmbientOrnament
-          variant="arc"
-          tone="orange"
-          className="-top-40 -left-40 h-[380px] w-[380px] sm:h-[460px] sm:w-[460px]"
-        />
-        <AmbientOrnament
-          variant="rings"
-          tone="navy"
-          className="-bottom-24 -right-24 hidden h-64 w-64 sm:block sm:h-80 sm:w-80"
-        />
         <RevealOnScroll>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-orange">Sensora</p>
           <h1 className="mt-4 font-serif text-4xl font-normal tracking-tight text-brand-navy sm:text-5xl">
-            Coleções
+            Kits
           </h1>
           <p className="mt-6 text-base leading-relaxed text-slate-600">
             Conjuntos de produtos criados para contar uma história sensorial completa.
@@ -30,11 +19,6 @@ export default function ColecoesPage() {
       </section>
 
       <div className="relative isolate mx-auto max-w-6xl overflow-hidden px-6 pb-24 sm:pb-32 lg:px-10 lg:pb-40">
-        <AmbientOrnament
-          variant="wave"
-          tone="orange"
-          className="bottom-0 left-1/2 hidden h-[160px] w-[560px] -translate-x-1/2 sm:block sm:h-[200px] sm:w-[720px]"
-        />
         {COLLECTIONS.map((collection) => (
           <RevealOnScroll key={collection.slug}>
             <Link href={getCollectionHref(collection)} className="group block">

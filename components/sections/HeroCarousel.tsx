@@ -36,28 +36,46 @@ export default function HeroCarousel() {
       aria-label="Destaques Sensora"
       className="group relative w-full overflow-hidden bg-brand-navy"
     >
-      <div
-        className="flex transition-transform duration-700 ease-out"
-        style={{ transform: `translateX(-${index * 100}%)` }}
-      >
+      <div className="relative aspect-[4/5] w-full sm:aspect-[16/9] lg:aspect-auto lg:h-[90vh] lg:max-h-[860px] lg:min-h-[600px]">
         {HERO_SLIDES.map((slide, slideIndex) => (
           <div
             key={slide.id}
-            className="relative aspect-[4/5] w-full flex-shrink-0 sm:aspect-[16/9] lg:aspect-auto lg:h-[90vh] lg:max-h-[860px] lg:min-h-[600px]"
+            className={`absolute inset-0 overflow-hidden transition-opacity duration-[1600ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              slideIndex === index ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
             aria-hidden={slideIndex !== index}
           >
-            <PlaceholderImage
-              src={slide.imageSrc}
-              alt={slide.imageAlt}
-              label={slide.title}
-              priority={slideIndex === 0}
-            />
-            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center px-6 pb-16 text-center text-white sm:pb-20">
+            {/* Zoom quase imperceptível ("Ken Burns") só na imagem ativa — sugere
+                profundidade, nunca movimento perceptível. */}
+            <div
+              className={`relative h-full w-full transition-transform ease-linear ${
+                slideIndex === index ? "duration-[9000ms] scale-[1.025]" : "duration-0 scale-100"
+              }`}
+            >
+              <PlaceholderImage
+                src={slide.imageSrc}
+                alt={slide.imageAlt}
+                label={slide.title}
+                priority={slideIndex === 0}
+                // Só o banner inicial (LCP, acima da dobra) precisa do sizes:
+                // é full-bleed, sem padding nem max-width no container.
+                sizes={slideIndex === 0 ? "100vw" : undefined}
+              />
+            </div>
+            <div
+              className={`absolute inset-x-0 bottom-0 flex flex-col items-center px-6 text-center text-white ${
+                slide.id === "velas-4-estacoes"
+                  ? "pb-8 [text-shadow:0_2px_12px_rgb(0_0_0_/_45%)] sm:pb-20"
+                  : "pb-16 sm:pb-20"
+              }`}
+            >
               <h2
                 className={
                   slide.hideOverlayHeading
                     ? "sr-only"
-                    : "max-w-3xl font-serif text-4xl leading-tight font-normal tracking-tight sm:text-6xl lg:text-7xl"
+                    : slide.id === "velas-4-estacoes"
+                      ? "max-w-3xl font-serif text-3xl leading-tight font-normal tracking-tight sm:text-6xl lg:text-7xl"
+                      : "max-w-3xl font-serif text-4xl leading-tight font-normal tracking-tight sm:text-6xl lg:text-7xl"
                 }
               >
                 {slide.title}
@@ -67,7 +85,9 @@ export default function HeroCarousel() {
                   className={
                     slide.hideOverlayHeading
                       ? "sr-only"
-                      : "mt-4 max-w-md text-sm font-light text-white/80 sm:text-base"
+                      : `text-sm font-light text-white/80 sm:text-base ${
+                          slide.id === "velas-4-estacoes" ? "mt-2 max-w-lg sm:mt-4 lg:max-w-2xl" : "mt-4 max-w-md"
+                        }`
                   }
                 >
                   {slide.subtitle}
@@ -75,7 +95,9 @@ export default function HeroCarousel() {
               )}
               <Link
                 href={slide.ctaHref}
-                className="group/cta mt-8 inline-flex items-center gap-3 border border-white/70 px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:border-brand-orange hover:bg-brand-orange"
+                className={`group/cta inline-flex items-center gap-3 border border-white/70 px-9 py-3.5 text-xs font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:border-brand-orange hover:bg-brand-orange ${
+                  slide.id === "velas-4-estacoes" ? "mt-5 sm:mt-8" : "mt-8"
+                }`}
               >
                 {slide.ctaLabel}
                 <span

@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import CollectionShowcase from "@/components/collections/CollectionShowcase";
 import CategoryProducts from "@/components/sections/CategoryProducts";
-import AmbientOrnament from "@/components/ui/AmbientOrnament";
 import EmptyState from "@/components/ui/EmptyState";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { CATEGORIES, getCategory, getCollectionsByCategory } from "@/lib/content";
@@ -27,16 +26,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <>
       <section className="relative mx-auto max-w-3xl overflow-hidden px-6 pt-28 pb-8 text-center sm:pt-36 lg:px-10">
-        <AmbientOrnament
-          variant="arc"
-          tone="orange"
-          className="-top-40 -left-40 h-[380px] w-[380px] sm:h-[460px] sm:w-[460px]"
-        />
-        <AmbientOrnament
-          variant="rings"
-          tone="navy"
-          className="-bottom-24 -right-24 hidden h-64 w-64 sm:block sm:h-80 sm:w-80"
-        />
         <RevealOnScroll>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-orange">Categoria</p>
           <h1 className="mt-4 font-serif text-4xl font-normal tracking-tight text-brand-navy sm:text-5xl">
@@ -55,7 +44,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       ) : (
         <EmptyState
           title="Novidades a caminho"
-          message={`Em breve, novas coleções de ${category.label.toLowerCase()} por aqui.`}
+          message={`Em breve, novos kits de ${category.label.toLowerCase()} por aqui.`}
         />
       )}
     </>

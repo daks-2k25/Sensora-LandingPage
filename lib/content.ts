@@ -173,11 +173,11 @@ const VELAS_4_ESTACOES: Collection = {
   slug: "4-estacoes",
   categorySlug: "velas",
   name: "Velas 4 Estações",
-  tagline: "Primavera, Verão, Outono e Inverno em uma coleção.",
+  tagline: "Primavera, Verão, Outono e Inverno em um kit.",
   description:
-    "Quatro atmosferas, infinitas memórias. Uma coleção criada para transformar cada momento do ano em uma experiência de aconchego, beleza e sensações que permanecem.",
-  heroImageSrc: "/images/hero/banner-4-estacoes.png",
-  heroImageAlt: "Coleção de velas aromáticas 4 Estações da Sensora, com as quatro velas lado a lado sobre uma bancada",
+    "Quatro atmosferas, infinitas memórias. Um kit criado para transformar cada momento do ano em uma experiência de aconchego, beleza e sensações que permanecem.",
+  heroImageSrc: "/images/hero/colecao-4-estacoes-banner.png",
+  heroImageAlt: "Kit de velas aromáticas 4 Estações da Sensora, com as quatro velas lado a lado sobre uma bancada",
   items: [
     {
       slug: "primavera",
@@ -269,7 +269,7 @@ export const NAV_CATEGORIES: NavCategory[] = [
     label: category.label,
     href: getCategoryHref(category.slug),
   })),
-  { label: "Coleções", href: "/colecoes" },
+  { label: "Kits", href: "/colecoes" },
 ];
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
@@ -279,7 +279,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     href: getCategoryHref(category.slug),
     imageSrc: category.imageSrc,
   })),
-  { id: "colecoes", label: "Coleções", href: "/colecoes" },
+  { id: "colecoes", label: "Kits", href: "/colecoes" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -290,21 +290,18 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: "velas-4-estacoes",
-    title: VELAS_4_ESTACOES.name,
-    subtitle: VELAS_4_ESTACOES.tagline,
-    ctaLabel: "Conhecer coleção",
+    title: "Kit 4 Estações",
+    subtitle: VELAS_4_ESTACOES.description,
+    ctaLabel: "Conhecer kit",
     ctaHref: getCollectionHref(VELAS_4_ESTACOES),
     imageAlt: VELAS_4_ESTACOES.heroImageAlt,
-    imageSrc: VELAS_4_ESTACOES.heroImageSrc,
-    // A arte já traz "Coleção 4 Estações" e a legenda desenhados na imagem;
-    // sobrepor o título aqui de novo deixava o texto ilegível.
-    hideOverlayHeading: true,
+    imageSrc: "/images/hero/colecao-4-estacoes-banner.png",
   },
   {
     id: "sprays-de-ambiente",
     title: "Sprays de Ambiente",
     subtitle: "Perfume o seu espaço com a assinatura Sensora.",
-    ctaLabel: "Conhecer coleção",
+    ctaLabel: "Conhecer kit",
     ctaHref: getCategoryHref("sprays"),
     imageAlt: "Sprays de ambiente Sensora",
     imageSrc: "/images/hero/sprays-de-ambiente.jpg",
@@ -313,7 +310,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "difusores-de-aroma",
     title: "Difusores de Aroma",
     subtitle: "Fragrância contínua para todos os ambientes.",
-    ctaLabel: "Conhecer coleção",
+    ctaLabel: "Conhecer kit",
     ctaHref: getCategoryHref("difusores"),
     imageAlt: "Difusores de aroma Sensora",
     imageSrc: "/images/hero/difusores-de-aroma.jpg",

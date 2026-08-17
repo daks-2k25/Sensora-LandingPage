@@ -6,6 +6,10 @@ type PlaceholderImageProps = {
   src?: string;
   label?: string;
   priority?: boolean;
+  /** Atributo `sizes` do next/image (obrigatório com `fill` para evitar o
+   *  warning de performance) — descreve a largura real renderizada da
+   *  imagem em cada breakpoint. Ver o call site para o cálculo específico. */
+  sizes?: string;
   className?: string;
 };
 
@@ -17,6 +21,7 @@ export default function PlaceholderImage({
   src,
   label,
   priority = false,
+  sizes,
   className = "",
 }: PlaceholderImageProps) {
   if (src) {
@@ -26,6 +31,7 @@ export default function PlaceholderImage({
         alt={alt}
         fill
         priority={priority}
+        sizes={sizes}
         className={`object-cover ${className}`}
       />
     );
