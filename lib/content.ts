@@ -339,7 +339,7 @@ export const FOOTER_CONTENT = {
     phone: "[telefone de contato a definir]",
   },
   social: [
-    { label: "Instagram", href: "#" },
+    { label: "Instagram", href: "https://www.instagram.com/sensoramarketingsensorial/" },
     { label: "Facebook", href: "#" },
   ],
 };
