@@ -105,7 +105,7 @@ export const CATEGORIES: Category[] = [
     slug: "sprays",
     label: "Sprays de Ambiente",
     description: "Fragrâncias em spray para perfumar o ambiente na hora, com a assinatura Sensora.",
-    imageSrc: "/images/categories/sprays-de-ambiente.jpg",
+    imageSrc: "/images/categories/sprays-de-ambiente.png",
     products: [
       {
         slug: "baunilha",
@@ -304,7 +304,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLabel: "Conhecer kit",
     ctaHref: getCategoryHref("sprays"),
     imageAlt: "Sprays de ambiente Sensora",
-    imageSrc: "/images/hero/sprays-de-ambiente.jpg",
+    imageSrc: "/images/hero/sprays-de-ambiente.png",
   },
   {
     id: "difusores-de-aroma",
@@ -324,8 +324,8 @@ export const ABOUT_CONTENT: AboutContent = {
     "Na Sensora Home, acreditamos que os aromas têm o poder de transformar a forma como vivemos nossos espaços. Uma fragrância pode despertar uma lembrança, marcar um momento ou simplesmente mudar a atmosfera de um ambiente. É por isso que criamos aromas que convidam você a sentir a casa de uma maneira diferente.",
     "Cada produto nasce da nossa experiência com o marketing sensorial, unindo perfumaria, estética e cuidado para transformar o cotidiano em experiências que despertam os sentidos. Porque uma casa bem perfumada não é apenas percebida — ela é sentida.",
   ],
-  imageAlt: "Vela aromática Sensora Home decorada com flor de laranjeira",
-  imageSrc: "/images/about/sobre-sensora.jpg",
+  imageAlt: "Spray de ambiente Sensora Baunilha em um quarto aconchegante",
+  imageSrc: "/images/about/sobre-sensora.png",
 };
 
 export const MANIFESTO_CONTENT = {

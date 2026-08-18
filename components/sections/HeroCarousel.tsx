@@ -60,13 +60,20 @@ export default function HeroCarousel() {
                 // Só o banner inicial (LCP, acima da dobra) precisa do sizes:
                 // é full-bleed, sem padding nem max-width no container.
                 sizes={slideIndex === 0 ? "100vw" : undefined}
+                // Foto de origem em retrato (2:3): no recorte bem largo do
+                // hero, o centro padrão deixa o rótulo do frasco atrás do
+                // texto sobreposto. Ancorar mais alto mantém o frasco
+                // inteiro visível e afasta o rótulo da faixa de texto.
+                className={slide.id === "sprays-de-ambiente" ? "object-[center_25%]" : undefined}
               />
             </div>
             <div
               className={`absolute inset-x-0 bottom-0 flex flex-col items-center px-6 text-center text-white ${
                 slide.id === "velas-4-estacoes"
                   ? "pb-8 [text-shadow:0_2px_12px_rgb(0_0_0_/_45%)] sm:pb-20"
-                  : "pb-16 sm:pb-20"
+                  : slide.id === "sprays-de-ambiente"
+                    ? "pb-16 [text-shadow:0_2px_12px_rgb(0_0_0_/_45%)] sm:pb-20"
+                    : "pb-16 sm:pb-20"
               }`}
             >
               <h2
