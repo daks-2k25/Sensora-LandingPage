@@ -11,6 +11,11 @@ type PlaceholderImageProps = {
    *  imagem em cada breakpoint. Ver o call site para o cálculo específico. */
   sizes?: string;
   className?: string;
+  /** Para imagens de host externo não cadastrado em `images.remotePatterns`
+   *  (ex.: `imagemUrl` vindo da API pública da Loja, sem host garantido —
+   *  ver frontend/components/loja/ProductImage.js) — pula a otimização do
+   *  Next em vez de quebrar em runtime. Default: false. */
+  unoptimized?: boolean;
 };
 
 // Ocupa 100% do container relativo do pai (posicionamento absoluto embutido).
@@ -23,6 +28,7 @@ export default function PlaceholderImage({
   priority = false,
   sizes,
   className = "",
+  unoptimized = false,
 }: PlaceholderImageProps) {
   if (src) {
     return (
@@ -32,6 +38,7 @@ export default function PlaceholderImage({
         fill
         priority={priority}
         sizes={sizes}
+        unoptimized={unoptimized}
         className={`object-cover ${className}`}
       />
     );

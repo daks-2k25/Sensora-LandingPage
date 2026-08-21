@@ -25,7 +25,7 @@ export default function ColecoesPage() {
               <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm shadow-2xl shadow-brand-navy/10">
                 <PlaceholderImage
                   src={collection.heroImageSrc}
-                  alt={collection.heroImageAlt}
+                  alt={collection.heroImageAlt ?? collection.name}
                   label={collection.name}
                   className="transition-transform duration-700 ease-out group-hover:scale-105"
                 />

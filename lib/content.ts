@@ -66,7 +66,12 @@ export type Collection = {
   tagline?: string;
   description: string;
   heroImageSrc?: string;
-  heroImageAlt: string;
+  /** Só é usado quando heroImageSrc está definido. */
+  heroImageAlt?: string;
+  /** Rótulo curto acima do nome (ex.: "Kit", "Coleção"). Default: "Kit". */
+  eyebrow?: string;
+  /** Texto do CTA final, sem a seta (ex.: "Conhecer kit"). Default: "Conhecer kit". */
+  ctaLabel?: string;
   items: ProductItem[];
 };
 
@@ -105,53 +110,13 @@ export const CATEGORIES: Category[] = [
     slug: "sprays",
     label: "Sprays de Ambiente",
     description: "Fragrâncias em spray para perfumar o ambiente na hora, com a assinatura Sensora.",
-    imageSrc: "/images/categories/sprays-de-ambiente.png",
-    products: [
-      {
-        slug: "baunilha",
-        name: "Baunilha",
-        imageSrc: "/images/products/sprays/baunilha.jpg",
-        imageAlt: "Spray de ambiente Baunilha da Sensora",
-      },
-      {
-        slug: "especiarias",
-        name: "Especiarias",
-        imageSrc: "/images/products/sprays/especiarias.jpg",
-        imageAlt: "Spray de ambiente Especiarias da Sensora",
-      },
-      {
-        slug: "flor-de-laranjeira",
-        name: "Flor de Laranjeira",
-        imageSrc: "/images/products/sprays/flor-de-laranjeira.jpg",
-        imageAlt: "Spray de ambiente Flor de Laranjeira da Sensora",
-      },
-    ],
+    imageSrc: "/images/products/sprays/flor-de-laranjeira.jpg",
   },
   {
     slug: "difusores",
     label: "Difusores de Aroma",
     description: "Fragrância contínua e discreta para manter a atmosfera perfumada o dia inteiro.",
     imageSrc: "/images/categories/difusores-de-aroma.jpg",
-    products: [
-      {
-        slug: "baunilha",
-        name: "Baunilha",
-        imageSrc: "/images/products/difusores/baunilha.jpg",
-        imageAlt: "Difusor de aroma Baunilha da Sensora",
-      },
-      {
-        slug: "especiarias",
-        name: "Especiarias",
-        imageSrc: "/images/products/difusores/especiarias.jpg",
-        imageAlt: "Difusor de aroma Especiarias da Sensora",
-      },
-      {
-        slug: "flor-de-laranjeira",
-        name: "Flor de Laranjeira",
-        imageSrc: "/images/products/difusores/flor-de-laranjeira.jpg",
-        imageAlt: "Difusor de aroma Flor de Laranjeira da Sensora",
-      },
-    ],
   },
 ];
 
@@ -226,7 +191,95 @@ const VELAS_4_ESTACOES: Collection = {
   ],
 };
 
-export const COLLECTIONS: Collection[] = [VELAS_4_ESTACOES];
+const SPRAYS_DE_AMBIENTE: Collection = {
+  slug: "sprays-de-ambiente",
+  categorySlug: "sprays",
+  name: "Sprays de Ambiente",
+  tagline: "Baunilha, Especiarias e Flor de Laranjeira em uma coleção.",
+  description: "Fragrâncias em spray para perfumar o ambiente na hora, com a assinatura Sensora.",
+  heroImageSrc: "/images/hero/sprays-de-ambiente-banner.jpg",
+  heroImageAlt: "Coleção de sprays de ambiente Sensora, com os três frascos lado a lado sobre uma bancada",
+  eyebrow: "Coleção",
+  ctaLabel: "Conhecer sprays",
+  items: [
+    {
+      slug: "baunilha",
+      name: "Baunilha",
+      description: "[Descrição a definir: notas e inspiração do spray Baunilha.]",
+      mood: "Um aroma doce e envolvente que aquece o ambiente na hora.",
+      imageSrc: "/images/products/sprays/baunilha.jpg",
+      imageAlt: "Spray de ambiente Baunilha da Sensora",
+      ctaLabel: "Conhecer spray",
+      ctaHref: LOJA_URL,
+    },
+    {
+      slug: "especiarias",
+      name: "Especiarias",
+      description: "[Descrição a definir: notas e inspiração do spray Especiarias.]",
+      mood: "Notas quentes e marcantes que trazem aconchego para a casa.",
+      imageSrc: "/images/products/sprays/especiarias.jpg",
+      imageAlt: "Spray de ambiente Especiarias da Sensora",
+      ctaLabel: "Conhecer spray",
+      ctaHref: LOJA_URL,
+    },
+    {
+      slug: "flor-de-laranjeira",
+      name: "Flor de Laranjeira",
+      description: "[Descrição a definir: notas e inspiração do spray Flor de Laranjeira.]",
+      mood: "Um toque floral e cítrico que renova o ar do ambiente.",
+      imageSrc: "/images/products/sprays/flor-de-laranjeira.jpg",
+      imageAlt: "Spray de ambiente Flor de Laranjeira da Sensora",
+      ctaLabel: "Conhecer spray",
+      ctaHref: LOJA_URL,
+    },
+  ],
+};
+
+const DIFUSORES_DE_AROMA: Collection = {
+  slug: "difusores-de-aroma",
+  categorySlug: "difusores",
+  name: "Difusores de Aroma",
+  tagline: "Baunilha, Especiarias e Flor de Laranjeira em uma coleção.",
+  description: "Fragrância contínua e discreta para manter a atmosfera perfumada o dia inteiro.",
+  heroImageSrc: "/images/hero/difusores-de-aroma-banner.jpg",
+  heroImageAlt: "Coleção de difusores de aroma Sensora, com os três difusores lado a lado sobre uma bancada",
+  eyebrow: "Coleção",
+  ctaLabel: "Conhecer difusores",
+  items: [
+    {
+      slug: "baunilha",
+      name: "Baunilha",
+      description: "[Descrição a definir: notas e inspiração do difusor Baunilha.]",
+      mood: "Perfume doce e envolvente, presente no ambiente o dia inteiro.",
+      imageSrc: "/images/products/difusores/baunilha.jpg",
+      imageAlt: "Difusor de aroma Baunilha da Sensora",
+      ctaLabel: "Conhecer difusor",
+      ctaHref: LOJA_URL,
+    },
+    {
+      slug: "especiarias",
+      name: "Especiarias",
+      description: "[Descrição a definir: notas e inspiração do difusor Especiarias.]",
+      mood: "Notas quentes e marcantes, difundidas de forma contínua e discreta.",
+      imageSrc: "/images/products/difusores/especiarias.jpg",
+      imageAlt: "Difusor de aroma Especiarias da Sensora",
+      ctaLabel: "Conhecer difusor",
+      ctaHref: LOJA_URL,
+    },
+    {
+      slug: "flor-de-laranjeira",
+      name: "Flor de Laranjeira",
+      description: "[Descrição a definir: notas e inspiração do difusor Flor de Laranjeira.]",
+      mood: "Um toque floral e cítrico que perfuma o ambiente sem pressa.",
+      imageSrc: "/images/products/difusores/flor-de-laranjeira.jpg",
+      imageAlt: "Difusor de aroma Flor de Laranjeira da Sensora",
+      ctaLabel: "Conhecer difusor",
+      ctaHref: LOJA_URL,
+    },
+  ],
+};
+
+export const COLLECTIONS: Collection[] = [VELAS_4_ESTACOES, SPRAYS_DE_AMBIENTE, DIFUSORES_DE_AROMA];
 
 export function getCollectionsByCategory(categorySlug: string): Collection[] {
   return COLLECTIONS.filter((collection) => collection.categorySlug === categorySlug);
@@ -279,7 +332,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     href: getCategoryHref(category.slug),
     imageSrc: category.imageSrc,
   })),
-  { id: "colecoes", label: "Kits", href: "/colecoes" },
+  { id: "colecoes", label: "Kits", href: "/colecoes", imageSrc: "/images/categories/kits.png" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -294,7 +347,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subtitle: VELAS_4_ESTACOES.description,
     ctaLabel: "Conhecer kit",
     ctaHref: getCollectionHref(VELAS_4_ESTACOES),
-    imageAlt: VELAS_4_ESTACOES.heroImageAlt,
+    imageAlt: VELAS_4_ESTACOES.heroImageAlt ?? "",
     imageSrc: "/images/hero/colecao-4-estacoes-banner.png",
   },
   {
@@ -304,7 +357,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLabel: "Conhecer kit",
     ctaHref: getCategoryHref("sprays"),
     imageAlt: "Sprays de ambiente Sensora",
-    imageSrc: "/images/hero/sprays-de-ambiente.png",
+    imageSrc: "/images/hero/sprays-de-ambiente-banner.jpg",
   },
   {
     id: "difusores-de-aroma",
@@ -313,7 +366,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     ctaLabel: "Conhecer kit",
     ctaHref: getCategoryHref("difusores"),
     imageAlt: "Difusores de aroma Sensora",
-    imageSrc: "/images/hero/difusores-de-aroma.jpg",
+    imageSrc: "/images/hero/difusores-de-aroma-banner.jpg",
   },
 ];
 

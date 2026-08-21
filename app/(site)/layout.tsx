@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Fraunces, Geist_Mono, Inter } from "next/font/google";
+import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageFadeIn from "@/components/ui/PageFadeIn";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
+      className={`${inter.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
     >
       <body className="bg-background text-slate-900">
         <PageFadeIn>

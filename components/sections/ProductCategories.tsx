@@ -71,11 +71,14 @@ export default function ProductCategories() {
                   />
                   <div className="absolute inset-x-0 bottom-0 p-5 lg:p-7">
                     <h3
-                      className={`font-serif font-normal text-white transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 ${layout?.title ?? "text-xl"}`}
+                      className={`font-serif font-normal text-white transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-fine:group-hover:-translate-y-0.5 ${layout?.title ?? "text-xl"}`}
                     >
                       {category.label}
                     </h3>
-                    <span className="mt-1 flex items-center gap-1.5 text-xs uppercase tracking-widest text-brand-orange-light opacity-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 group-hover:opacity-100 translate-y-1">
+                    {/* Em telas sem hover confiável (touch), a ação já nasce visível —
+                        só em pointer fino (mouse) ela começa discreta e revela no hover
+                        (ou no foco por teclado). Ver contexto na entrega desta etapa. */}
+                    <span className="mt-1 flex translate-y-0 items-center gap-1.5 text-xs uppercase tracking-widest text-brand-orange-light opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-fine:translate-y-1 pointer-fine:opacity-0 pointer-fine:group-hover:translate-y-0 pointer-fine:group-hover:opacity-100 pointer-fine:group-focus-visible:translate-y-0 pointer-fine:group-focus-visible:opacity-100">
                       Ver produtos →
                     </span>
                   </div>

@@ -20,13 +20,13 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
       {collection.heroImageSrc && (
         <RevealOnScroll className="relative mx-auto aspect-[21/9] w-full max-w-6xl overflow-hidden rounded-sm shadow-2xl shadow-brand-navy/10">
           <ImageReveal>
-            <PlaceholderImage src={collection.heroImageSrc} alt={collection.heroImageAlt} label={collection.name} />
+            <PlaceholderImage src={collection.heroImageSrc} alt={collection.heroImageAlt ?? collection.name} label={collection.name} />
           </ImageReveal>
         </RevealOnScroll>
       )}
 
       <RevealOnScroll className="mx-auto mt-12 max-w-3xl text-center sm:mt-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-orange">Kit</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-orange">{collection.eyebrow ?? "Kit"}</p>
         <h2 id={headingId} className="mt-4 font-serif text-3xl font-normal tracking-tight text-brand-navy sm:text-4xl">
           <TextReveal>{collection.name}</TextReveal>
         </h2>
@@ -36,9 +36,19 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
         <p className="mt-6 text-base leading-relaxed text-slate-600">{collection.description}</p>
       </RevealOnScroll>
 
-      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-10 sm:mt-20 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4">
+      {/* Flex + justify-center em vez de grid: com uma Collection de menos de
+          4 itens (Sprays, Difusores), os cards centralizam como grupo na
+          linha em vez de ficar alinhados à esquerda com uma coluna vazia à
+          direita. As larguras replicam exatamente as colunas do grid antigo
+          (25% menos a fatia do gap-x-6), então 4 itens (Velas) preenchem a
+          linha de ponta a ponta como antes — sem mudança visual pra eles. */}
+      <div className="mx-auto mt-16 flex max-w-6xl flex-wrap justify-center gap-x-6 gap-y-10 sm:mt-20 sm:gap-y-14">
         {collection.items.map((item, index) => (
-          <RevealOnScroll key={item.slug} delayMs={index * 90} className="group text-center">
+          <RevealOnScroll
+            key={item.slug}
+            delayMs={index * 90}
+            className="group w-full text-center sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
+          >
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm shadow-md shadow-brand-navy/10 transition-shadow duration-700 group-hover:shadow-lg group-hover:shadow-brand-navy/15">
               <ImageReveal>
                 <PlaceholderImage
@@ -71,7 +81,7 @@ export default function CollectionShowcase({ collection }: CollectionShowcasePro
 
       <RevealOnScroll className="mt-16 flex justify-center sm:mt-20">
         <Button href={LOJA_URL} variant="primary">
-          Conhecer kit →
+          {collection.ctaLabel ?? "Conhecer kit"} →
         </Button>
       </RevealOnScroll>
     </section>
